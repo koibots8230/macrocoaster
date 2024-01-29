@@ -17,7 +17,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] =  {ENCODER_CCW_CW(JS_13, JS_14), ENCODER_CCW_CW(JS_16, JS_15)},
+    [0] =  {ENCODER_CCW_CW(JS_13, JS_14), ENCODER_CCW_CW(JS_0, JS_15)},
 };
 
 

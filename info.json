@@ -1,23 +1,14 @@
 {
     "manufacturer": "TwoSix Technologies",
     "keyboard_name": "Macrocoaster",
-    "maintainer": "placeholder",
-    "bootloader": "atmel-dfu",
+    "maintainer": "KoiBots",
     "diode_direction": "COL2ROW",
-    "features": {
-        "bootmagic": true,
-        "command": false,
-        "console": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": true
-    },
     "matrix_pins": {
         "cols": ["F7", "F6", "F5"],
         "rows": ["B1", "B3", "B2", "B6"]
     },
-    "processor": "atmega32u4",
-    "url": "",
+    "development_board": "kb2040",
+    "url": "https://github.com/koibots8230/macrocoaster",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0xBEEF",

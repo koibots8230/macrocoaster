@@ -26,3 +26,10 @@
 
 #define BOOTMAGIC_LITE_ROW 1
 #define BOOTMAGIC_LITE_COLUMN 1
+
+// Joystick Button Count
+#define JOYSTICK_BUTTON_COUNT 16
+// Joystick Axes Count
+#define JOYSTICK_AXIS_COUNT 0 // TODO
+// Joystick Axes Resolution
+#define JOYSTICK_AXIS_RESOLUTION 8
