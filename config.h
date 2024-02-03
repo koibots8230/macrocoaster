@@ -15,9 +15,9 @@
 //#define NO_PRINT
 
 /* disable action features */
-//#define NO_ACTION_LAYER
-//#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
+#define NO_ACTION_LAYER
+#define NO_ACTION_TAPPING
+#define NO_ACTION_ONESHOT
 
 #define ENCODERS_PAD_A { B4, D7 }
 #define ENCODERS_PAD_B { E6, C6 }
@@ -26,3 +26,9 @@
 
 #define BOOTMAGIC_LITE_ROW 1
 #define BOOTMAGIC_LITE_COLUMN 1
+
+#define JOYSTICK_BUTTON_COUNT 17
+#define JOYSTICK_AXIS_COUNT 2
+#define JOYSTICK_AXIS_RESOLUTION 8
+
+#define JOYSTICK_AXIS_PRECISION 2048
