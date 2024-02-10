@@ -34,7 +34,8 @@ bool dip_switch_update_user(uint8_t index, bool active) {
             } else {
 			    unregister_joystick_button(3);
             }
-            return false;
+            //return false;
+            break;
        case 1:
             if (active) {
 			    register_joystick_button(0);
@@ -43,7 +44,8 @@ bool dip_switch_update_user(uint8_t index, bool active) {
             } else {
 			    unregister_joystick_button(0);
             }
-            return false;
+            //return false;
+            break;
     }
     return true;
 }
@@ -53,28 +55,30 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     switch (index) {
         case 1:
             if (!clockwise) {
-                //register_joystick_button(13);
-                //unregister_joystick_button(13);
-                l_pos -= JOYSTICK_AXIS_PRECISION;
+                register_joystick_button(13);
+                unregister_joystick_button(13);
+                //l_pos -= JOYSTICK_AXIS_PRECISION;
             } else {
-                //register_joystick_button(14);
-                //unregister_joystick_button(14);
-                l_pos += JOYSTICK_AXIS_PRECISION;
+                register_joystick_button(14);
+                unregister_joystick_button(14);
+                //l_pos += JOYSTICK_AXIS_PRECISION;
             }
-            joystick_set_axis(0, l_pos);
-            joystick_set_axis(0, 1000);
+            //joystick_set_axis(0, l_pos);
+            //joystick_set_axis(0, 1000);
+            return false;
             break;
         case 0:
             if (clockwise) {
-                //register_joystick_button(15);
-                //unregister_joystick_button(15);
-                r_pos -= JOYSTICK_AXIS_PRECISION;
+                register_joystick_button(15);
+                unregister_joystick_button(15);
+                //r_pos -= JOYSTICK_AXIS_PRECISION;
             } else {
-                //register_joystick_button(16);
-                //unregister_joystick_button(16);
-                r_pos += JOYSTICK_AXIS_PRECISION;
+                register_joystick_button(16);
+                unregister_joystick_button(16);
+                //r_pos += JOYSTICK_AXIS_PRECISION;
             }
-            joystick_set_axis(1, r_pos);
+            //joystick_set_axis(1, r_pos);
+            return false;
             break;
     }
     return true;
