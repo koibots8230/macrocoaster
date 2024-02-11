@@ -1,8 +1,6 @@
-// Copyright 2023 QMK
-// SPDX-License-Identifier: GPL-2.0-or-later
-
 #include "keycodes.h"
 #include QMK_KEYBOARD_H
+
 
 int16_t l_pos = 0;
 int16_t r_pos = 0;
@@ -26,25 +24,23 @@ joystick_config_t joystick_axes[JOYSTICK_AXIS_COUNT] = {
 
 bool dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
-        case 0:
+       case 0:
             if (active) {
 			    register_joystick_button(3);
-                l_pos = 0;
-                joystick_set_axis(0, l_pos);
-            } else {
-			    unregister_joystick_button(3);
-            }
-            //return false;
-            break;
-       case 1:
-            if (active) {
-			    register_joystick_button(0);
                 r_pos = 0;
                 joystick_set_axis(1, r_pos);
             } else {
+			    unregister_joystick_button(3);
+            }
+            break;
+        case 1:
+            if (active) {
+			    register_joystick_button(0);
+                l_pos = 0;
+                joystick_set_axis(0, l_pos);
+            } else {
 			    unregister_joystick_button(0);
             }
-            //return false;
             break;
     }
     return true;
@@ -53,33 +49,64 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     switch (index) {
-        case 1:
+        case 0:
             if (!clockwise) {
                 register_joystick_button(13);
                 unregister_joystick_button(13);
-                //l_pos -= JOYSTICK_AXIS_PRECISION;
+                #ifndef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                if (l_pos - JOYSTICK_AXIS_SENSITIVITY > -128) {
+                    l_pos -= JOYSTICK_AXIS_SENSITIVITY;
+                    joystick_set_axis(0, l_pos);
+                }
+                #endif
+                #ifdef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                l_pos -= JOYSTICK_AXIS_SENSITIVITY;
+                joystick_set_axis(0, l_pos);
+                #endif
             } else {
                 register_joystick_button(14);
                 unregister_joystick_button(14);
-                //l_pos += JOYSTICK_AXIS_PRECISION;
+                #ifndef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                if (l_pos + JOYSTICK_AXIS_SENSITIVITY < 128) {
+                    l_pos += JOYSTICK_AXIS_SENSITIVITY;
+                    joystick_set_axis(0, l_pos);
+                }
+                #endif
+                #ifdef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                l_pos += JOYSTICK_AXIS_SENSITIVITY;
+                joystick_set_axis(0, l_pos);
+                #endif
             }
-            //joystick_set_axis(0, l_pos);
-            //joystick_set_axis(0, 1000);
             return false;
-            break;
-        case 0:
+        case 1:
             if (clockwise) {
                 register_joystick_button(15);
                 unregister_joystick_button(15);
-                //r_pos -= JOYSTICK_AXIS_PRECISION;
+                #ifndef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                if (r_pos - JOYSTICK_AXIS_SENSITIVITY > -128) {
+                    r_pos -= JOYSTICK_AXIS_SENSITIVITY;
+                    joystick_set_axis(1, r_pos);
+                }
+                #endif
+                #ifdef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                r_pos -= JOYSTICK_AXIS_SENSITIVITY;
+                joystick_set_axis(1, r_pos);
+                #endif
             } else {
                 register_joystick_button(16);
                 unregister_joystick_button(16);
-                //r_pos += JOYSTICK_AXIS_PRECISION;
+                #ifndef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                if (r_pos + JOYSTICK_AXIS_SENSITIVITY < 128) {
+                    r_pos += JOYSTICK_AXIS_SENSITIVITY;
+                    joystick_set_axis(1, r_pos);
+                }
+                #endif
+                #ifdef JOYSTICK_AXIS_ALLOW_OVERFLOW
+                r_pos += JOYSTICK_AXIS_SENSITIVITY;
+                joystick_set_axis(1, r_pos);
+                #endif
             }
-            //joystick_set_axis(1, r_pos);
             return false;
-            break;
     }
     return true;
 }

@@ -1,7 +1,7 @@
 {
     "manufacturer": "TwoSix Technologies",
     "keyboard_name": "Macrocoaster",
-    "maintainer": "placeholder",
+    "maintainer": "KoiBots #8230",
     "bootloader": "atmel-dfu",
     "diode_direction": "COL2ROW",
     "features": {
@@ -17,11 +17,11 @@
         "rows": ["B1", "B3", "B2", "B6"]
     },
     "processor": "atmega32u4",
-    "url": "",
+    "url": "https://github.com/koibots8230/macrocoaster",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0xBEEF",
-        "vid": "0xDEAD"
+        "pid": "FishPad",
+        "vid": "8230"
     },
     "layouts": {
         "LAYOUT": {

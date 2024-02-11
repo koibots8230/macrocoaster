@@ -1,6 +1,3 @@
-// Copyright 2023 placeholder (@placeholder)
-// SPDX-License-Identifier: GPL-2.0-or-later
-
 #pragma once
 
 /*
@@ -8,13 +5,9 @@
  *  These options are also useful to firmware size reduction.
  */
 
-/* disable debug print */
 //#define NO_DEBUG
-
-/* disable print */
 //#define NO_PRINT
 
-/* disable action features */
 #define NO_ACTION_LAYER
 #define NO_ACTION_TAPPING
 #define NO_ACTION_ONESHOT
@@ -31,4 +24,9 @@
 #define JOYSTICK_AXIS_COUNT 2
 #define JOYSTICK_AXIS_RESOLUTION 8
 
-#define JOYSTICK_AXIS_PRECISION 2048
+
+/* Set how much the joystick moves per encoder click, ranges from -128 to 127 (works best with powers of 2) */
+#define JOYSTICK_AXIS_SENSITIVITY 8
+
+/* Enable to allow the joystick to overflow to the other side when at max value */
+//#define JOYSTICK_AXIS_ALLOW_OVERFLOW
