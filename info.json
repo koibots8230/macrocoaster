@@ -19,8 +19,8 @@
     "url": "https://github.com/koibots8230/macrocoaster",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "FishPad",
-        "vid": "8230"
+        "pid": "0xF154",
+        "vid": "0x2026"
     },
     "layouts": {
         "LAYOUT": {
